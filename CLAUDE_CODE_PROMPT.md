@@ -254,7 +254,7 @@ Put design tokens in the Tailwind config as named colors, and build reusable com
 
 ## 9. Also produce
 
-- `.env.example` with `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`, plus a comment explaining that the anon key is safe to expose publicly *because* RLS is what actually protects the data — and that the service role key must never appear in this project.
+- `.env.example` with `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY`. Use Supabase's **new** API key format — the publishable key, which starts with `sb_publishable_` — not the legacy JWT-based `anon` key, which Supabase is removing at the end of 2026. Add a comment explaining that the publishable key is safe to expose publicly *because* RLS is what actually protects the data, and that the secret key (`sb_secret_`) bypasses RLS entirely and must never appear anywhere in this project.
 - `.gitignore` covering `node_modules`, `dist`, `.env.local`.
 - `README.md`: what the app is, the setup steps in order, the schema laid out as a table, and a "how to deploy to Vercel" section.
 - `SETUP.md`: numbered, beginner-level walkthrough of creating the Supabase project, running the migrations, enabling email auth, and getting the env vars. Assume the reader has never used Supabase.
